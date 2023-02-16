@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/', views.users_list),
+    path('anime/', views.anime_list),
+    path('top=100/', views.top_hundred_anime),
 ]
