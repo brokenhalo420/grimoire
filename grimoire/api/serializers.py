@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 class AnimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Anime
-        fields = ['title', 'rating', 'image_url']
+        fields = ['anime_id', 'title', 'rating', 'image_url']
 
 
 class SavedAnimeSerializer(serializers.ModelSerializer):
