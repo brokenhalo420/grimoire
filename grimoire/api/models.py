@@ -21,7 +21,7 @@ class Anime(models.Model):
     anime_id = models.IntegerField(default=0)
     title = models.CharField(max_length=200)
     rating = models.FloatField()
-    image_url= models.TextField(max_length=500)
+    image_url = models.TextField(max_length=500)
 
     def __str__(self):
         return self.title
