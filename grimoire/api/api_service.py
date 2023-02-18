@@ -3,8 +3,8 @@ from requests.auth import HTTPBasicAuth
 from . import credentials 
 from .import models
 
-def get_top_anime(offset=0):
-    parameters = {'ranking_type': 'all', 'fields': 'id,title,main_picture,mean,synopsis', 'offset': offset}
+def get_top_anime(offset=0, limit=100):
+    parameters = {'ranking_type': 'all', 'fields': 'id,title,main_picture,mean,synopsis', 'offset': offset, 'limit': limit}
     headers = {f'{credentials.HEADER_NAME}': f'{credentials.CLIENT_ID}'}
 
     r = requests.get(f'{credentials.API_URL}anime/ranking', params = parameters, headers=headers)

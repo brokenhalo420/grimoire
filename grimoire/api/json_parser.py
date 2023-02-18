@@ -41,6 +41,11 @@ def parse_json_to_anime(json_dictionary):
         return None
 
 def parse_json_response_to_anime_list(json_response):
+    if 'data' not in json_response:
+        print(json_response)
+        return []
+    
+
     json_response = json_response['data']
     json_response = list(map(lambda x: x['node'], json_response))
     anime_list = list(map(lambda x: parse_json_to_anime(x), json_response))
