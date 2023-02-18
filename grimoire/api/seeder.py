@@ -1,10 +1,12 @@
 from apscheduler.schedulers.background import BackgroundScheduler
-from services.api_service import get_top_anime
-from models import Anime
+
+from . import json_parser
+from . import api_service
+from .models import Anime
 
 def update():
     for i in range(0,10000,500):
-        anime_list = get_top_anime(i)
+        anime_list = json_parser.parse_json_response_to_anime_list(api_service.get_top_anime(i))
         for anime in anime_list:
             Anime.objects.update_or_create(
                 title = f'{anime.title}',
@@ -22,5 +24,5 @@ def update():
 
 def start():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(update, 'interval', seconds = 60 * 60)
+    scheduler.add_job(update, 'interval', seconds = 30 * 60)
     scheduler.start()

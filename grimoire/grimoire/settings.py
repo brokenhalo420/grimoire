@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'client',
     'rest_framework',
     'requests',
-    'apscheduler'
 ]
 
 MIDDLEWARE = [
