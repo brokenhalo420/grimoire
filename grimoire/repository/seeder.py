@@ -61,7 +61,6 @@ def start():
 
 
 def getRange():
-    print(f'objects count: {Anime.objects.count()}')
     if Anime.objects.count() == 0 or Anime.objects.count() <= DB_MAXIMUM_MODELS:
         return list(range(0, DB_MAXIMUM_MODELS, STEP))
     else:
