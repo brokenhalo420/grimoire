@@ -14,7 +14,6 @@ STEP = 500
 
 def update():
     range_list = getRange()
-    print(range_list)
     limit = STEP
     rest = Anime.objects.count() - (Anime.objects.count() // STEP)
     if rest < STEP and rest != 0:
