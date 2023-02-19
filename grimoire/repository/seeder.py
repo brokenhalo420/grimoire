@@ -10,6 +10,7 @@ DB_MAXIMUM_MODELS = 10000
 # ANIME PER REQUEST - MAXIMUM 500
 STEP = 500
 
+
 def update():
     range_list = getRange()
     print(range_list)
@@ -17,13 +18,14 @@ def update():
     rest = Anime.objects.count() - (Anime.objects.count() // STEP)
     if rest < STEP and rest != 0:
         limit = rest
-                    
+
     for i in range_list:
-        anime_list = json_parser.parse_json_response_to_anime_list(api_service.get_top_anime(limit = limit, offset = i))
+        anime_list = json_parser.parse_json_response_to_anime_list(
+            api_service.get_top_anime(limit=limit, offset=i))
         for anime in anime_list:
             if anime is None:
                 continue
-            
+
             anime_in_db, created = Anime.objects.get_or_create(
                 title=f'{anime.title}',
                 defaults={
@@ -48,16 +50,18 @@ def update():
 
 def start():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(update, 'interval', hours = 1, next_run_time = datetime.now())
+    scheduler.add_job(update, 'interval', hours=1,
+                      next_run_time=datetime.now())
     scheduler.start()
+
 
 def getRange():
     print(f'objects count: {Anime.objects.count()}')
     if Anime.objects.count() == 0 or Anime.objects.count() <= DB_MAXIMUM_MODELS:
-        return list(range(0,DB_MAXIMUM_MODELS, STEP))
+        return list(range(0, DB_MAXIMUM_MODELS, STEP))
     else:
         max = (Anime.objects.count() // STEP) * STEP
-        range_list = list(range(0,max,STEP))
-        if(Anime.objects.count() - max != 0):
+        range_list = list(range(0, max, STEP))
+        if (Anime.objects.count() - max != 0):
             range_list.append(max)
         return range_list

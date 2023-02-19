@@ -6,6 +6,7 @@ from .forms import RegisterUserForm
 
 # Create your views here.
 
+
 def login_user(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -18,17 +19,20 @@ def login_user(request):
             login(request, user)
             return redirect('home')
         else:
-            messages.success(request, ("There was an error logining in. Try again"))
+            messages.success(
+                request, ("There was an error logining in. Try again"))
             return redirect('login')
-    else: 
-        return render(request, 'authenticate/login.html',{})
+    else:
+        return render(request, 'authenticate/login.html', {})
+
 
 def logout_user(request):
     if not request.user.is_authenticated:
         return redirect('login')
-    
+
     logout(request)
     return redirect('login')
+
 
 def register_user(request):
     if request.user.is_authenticated:
@@ -47,5 +51,5 @@ def register_user(request):
             return redirect('home')
     else:
         form = RegisterUserForm()
-        
+
     return render(request, 'authenticate/register.html', {'form': form})

@@ -9,7 +9,7 @@ def parse_json_to_anime(json_dictionary):
             anime.anime_id = json_dictionary['id']
         else:
             return None
-        
+
         if 'title' in json_dictionary:
             anime.title = json_dictionary['title']
         else:
@@ -20,7 +20,7 @@ def parse_json_to_anime(json_dictionary):
                 anime.image_url = json_dictionary['main_picture']['large']
             elif 'medium' in json_dictionary['main_picture']:
                 anime.image_url = json_dictionary['main_picture']['medium']
-            else :
+            else:
                 anime.image_url = ''
         else:
             anime.image_url = ''
@@ -29,7 +29,7 @@ def parse_json_to_anime(json_dictionary):
             anime.rating = json_dictionary['mean']
         else:
             anime.rating = 0
-        
+
         if 'synopsis' in json_dictionary:
             anime.description = json_dictionary['synopsis']
         else:
@@ -40,11 +40,11 @@ def parse_json_to_anime(json_dictionary):
         print(json_dictionary)
         return None
 
+
 def parse_json_response_to_anime_list(json_response):
     if 'data' not in json_response:
         print(json_response)
         return []
-    
 
     json_response = json_response['data']
     json_response = list(map(lambda x: x['node'], json_response))

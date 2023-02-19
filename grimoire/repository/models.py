@@ -7,8 +7,9 @@ CATEGORIES = [
     ('FAVORITE', 'Favorite'),
     ('WATCHLATER', 'Watch Later'),
     ('WATCHED', 'Watched'),
-    ('NONE','None')
+    ('NONE', 'None')
 ]
+
 
 class Anime(models.Model):
     anime_id = models.IntegerField(default=0)
@@ -20,13 +21,14 @@ class Anime(models.Model):
     def __str__(self):
         return self.title
 
+
 class SavedAnime(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
     type = models.CharField(
-        max_length = 20,
-        choices = CATEGORIES,
-        default = 'NONE'
+        max_length=20,
+        choices=CATEGORIES,
+        default='NONE'
     )
 
     def __str__(self) -> str:

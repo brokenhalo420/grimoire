@@ -17,7 +17,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Anime',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('anime_id', models.IntegerField(default=0)),
                 ('title', models.CharField(max_length=200)),
                 ('rating', models.FloatField()),
@@ -28,10 +29,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SavedAnime',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('type', models.CharField(choices=[('FAVORITE', 'Favorite'), ('WATCHLATER', 'Watch Later'), ('WATCHED', 'Watched'), ('NONE', 'None')], default='NONE', max_length=20)),
-                ('anime', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='repository.anime')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('type', models.CharField(choices=[('FAVORITE', 'Favorite'), ('WATCHLATER', 'Watch Later'), (
+                    'WATCHED', 'Watched'), ('NONE', 'None')], default='NONE', max_length=20)),
+                ('anime', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='repository.anime')),
+                ('user', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]
