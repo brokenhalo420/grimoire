@@ -1,8 +1,8 @@
 from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from . import json_parser
-from . import api_service
+from utility import json_parser
+from api import api_service
 from .models import Anime
 
 
@@ -46,7 +46,7 @@ def update():
     print(f'{datetime.now()}: Done!')
 
 
-async def start():
+def start():
     scheduler = BackgroundScheduler()
     scheduler.add_job(update, 'interval', hours = 1, next_run_time = datetime.now())
     scheduler.start()

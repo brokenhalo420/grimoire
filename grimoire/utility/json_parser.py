@@ -1,5 +1,5 @@
 import json
-from .models import Anime
+from repository.models import Anime
 
 
 def parse_json_to_anime(json_dictionary):

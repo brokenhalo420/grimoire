@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.contrib.auth.models import User
-from .models import Anime, SavedAnime
-from .serializers import AnimeSerializer, SavedAnimeSerializer
+from repository.models import Anime, SavedAnime
+from utility.serializers import AnimeSerializer, SavedAnimeSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status

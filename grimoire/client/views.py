@@ -4,8 +4,8 @@ from django.views.decorators.csrf import csrf_protect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 import requests
-from api.serializers import AnimeSerializer
-from .deserializers import parse_anime_list
+from utility.serializers import AnimeSerializer
+from utility.deserializers import parse_anime_list
 
 # Create your views here.
 

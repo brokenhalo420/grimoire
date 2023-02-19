@@ -1,4 +1,4 @@
-from api.models import Anime
+from repository.models import Anime
 
 def deserialize_anime(anime_dict):
     try:

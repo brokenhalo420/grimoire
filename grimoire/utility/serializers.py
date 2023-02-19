@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Anime, SavedAnime
+from repository.models import Anime, SavedAnime
 
 
 class AnimeSerializer(serializers.ModelSerializer):

@@ -1,7 +1,7 @@
 import requests
 from requests.auth import HTTPBasicAuth
-from . import credentials 
-from .import models
+from repository import models
+from api import credentials
 
 def get_top_anime(offset=0, limit=100):
     parameters = {'ranking_type': 'all', 'fields': 'id,title,main_picture,mean,synopsis', 'offset': offset, 'limit': limit}
