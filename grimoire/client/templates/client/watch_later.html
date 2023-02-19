@@ -1,0 +1,37 @@
+{% extends 'client/home.html' %}
+{% load static %}
+
+{% block watch_later %}
+{% if user.is_authenticated %}
+{% csrf_token %}
+<ul style="z-index:5;position:absolute;height:500px;width:1500px;overflow-y:scroll;">
+    <li style="display:flex;flex-direction:row; justify-content:center;align-items:center;margin-bottom:50px;">
+        <p>Image</p>
+        <p style="margin-left:10px;margin-right:10px;">|</p>
+        <p>Title</p>
+        <p style="margin-left:10px;margin-right:10px;">|</p>
+        <p>Rating</p>
+        <p style="margin-left:10px;margin-right:10px;">|</p>
+        <p>Description</p>
+        <p style="margin-left:10px;margin-right:10px;">|</p>
+        <p>Buttons</p>
+        
+    </li>
+{% for anime in anime_list %}
+    <li style="display:flex;flex-direction:row; justify-content:center;align-items:center;margin-bottom:50px;">
+        <img src="{{anime.image_url}}" alt="{{anime.title}}" style="width:200px;height:auto;"/>
+        <p style="margin-left:10px;margin-right:10px;">|</p>
+        <p style="width:5%;">{{ anime.title }}</p>
+        <p style="margin-left:10px;margin-right:10px;">|</p>
+        <p>{{ anime.rating }}</p>
+        <p style="margin-left:10px;margin-right:10px;">|</p>
+        <p style="width:50%;overflow-y:scroll;">{{ anime.description }}</p>
+        <p style="margin-left:10px;margin-right:10px;">|</p>
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+            <a href="{% url 'remove_from_watch_later' anime_id=anime.anime_id %}"><img src="{% static 'remove.png' %}" style="width:50px;"></img></a>
+        </div>
+    </li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'client/base.html' %}
+{% block content %}
+{% if not user.is_authenticated %}
+{% load static %}
+<div style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+">
+<img src="{% static 'closed_book.png' %}" style="
+    top: 20px;
+    height: 1155px;
+    position: absolute;
+    z-index:2;
+">
+<h1 style="
+    z-index:2;
+    font-size: 150px !important ;
+    top: 150px;
+    position: absolute;
+    font-family: 'Brush Script MT';
+    color: #4B0B1A;
+">The Grimoire</h1>
+<form action="" method=POST style="z-index:3; top:700px; position:absolute; width:600px; left=55%;">
+    {% csrf_token %}
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <input type="text" name="username" class="form-control" placeholder="Username" />
+    </div>
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <input type="password" name="password" class="form-control" placeholder="Password"/>
+    </div>
+  
+    <!-- Submit button -->
+    <div class="button-container" style="display:flex; justify-content:center; align-items:center">
+        <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+    </div>
+  
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p>Not a member? <a href="{% url 'register' %}">Register</a></p>
+    </div>
+  </form>
+</div>
+{% endif %}
+{% endblock %}

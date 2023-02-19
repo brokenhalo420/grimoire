@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -8,14 +9,6 @@ CATEGORIES = [
     ('WATCHED', 'Watched'),
     ('NONE','None')
 ]
-
-class User(models.Model):
-    username = models.CharField(max_length=80)
-    password = models.CharField(max_length=100)
-    email = models.CharField(max_length=80)
-
-    def __str__(self):
-        return self.username
 
 class Anime(models.Model):
     anime_id = models.IntegerField(default=0)

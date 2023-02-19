@@ -1,0 +1,143 @@
+{% extends 'client/base.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+">
+    <img src="{% static 'open_book.png' %}" class="book-open" style="
+        width: 1600px;
+        z-index:3;
+    ">
+
+    <a href="" class="search-button" style="
+        background-image: url({% static 'ribbon_green.png'%});
+        background-size: 140px 60px;
+        position:absolute;
+        top:100px;
+        left:1850px;
+        width:140px;
+        height:60px;
+        color: white;
+        display:flex;
+        justify-content: flex-end;
+        align-items:center;
+        padding-right: 50px;
+        font-family: 'Copperplate Gothic Light';
+    " >
+        Search
+    </a>
+    {% block search %}
+    {% endblock %}
+
+    <a href="{% url 'ranking' number=100 %}" class="ranking-button" style="
+        background-image: url({% static 'ribbon_red.png'%});
+        background-size: 140px 60px;
+        position:absolute;
+        top:180px;
+        left:1850px;
+        width:140px;
+        height:60px;
+        color: white;
+        display:flex;
+        justify-content: flex-end;
+        align-items:center;
+        padding-right: 50px;
+        font-family: 'Copperplate Gothic Light';
+    " >
+        Ranking
+    </a>
+
+    {% block ranking %}
+
+    {% endblock %}
+
+    <a href="{% url 'favorites' %}" class="favorites-button" style="
+        background-image: url({% static 'ribbon_magenta.png'%});
+        background-size: 140px 60px;
+        position:absolute;
+        top:260px;
+        left:1850px;
+        width:140px;
+        height:60px;
+        color: white;
+        display:flex;
+        justify-content: flex-end;
+        align-items:center;
+        padding-right: 50px;
+        font-family: 'Copperplate Gothic Light';
+    " >
+        Favorites
+    </a>
+
+    {% block favorites %}
+
+    {% endblock %}
+
+    <a href="{% url 'watch_later' %}" class="watch_later-button" style="
+        background-image: url({% static 'ribbon_yellow.png'%});
+        background-size: 140px 60px;
+        position:absolute;
+        top:340px;
+        left:1850px;
+        width:140px;
+        height:60px;
+        color: white;
+        display:flex;
+        justify-content: flex-end;
+        align-items:center;
+        padding-right: 50px;
+        font-family: 'Copperplate Gothic Light';
+    " >
+        Watch Later
+    </a>
+
+    {% block watch_later %}
+    {% endblock %}
+
+    <a href="{% url 'watched' %}" class="watched-button" style="
+        background-image: url({% static 'ribbon_blue.png'%});
+        background-size: 140px 60px;
+        position:absolute;
+        top:400px;
+        left:1850px;
+        width:140px;
+        height:60px;
+        color: white;
+        display:flex;
+        justify-content: flex-end;
+        align-items:center;
+        padding-right: 50px;
+        font-family: 'Copperplate Gothic Light';
+    " >
+        Watched
+    </a>
+
+    {% block watched %}
+    {% endblock %}
+
+    <a href="{% url 'logout' %}" class="logout-button" style="
+        background-image: url({% static 'ribbon.png'%});
+        background-size: 140px 60px;
+        position:absolute;
+        top:1000px;
+        left:1850px;
+        width:140px;
+        height:60px;
+        color: white;
+        display:flex;
+        justify-content: flex-end;
+        align-items:center;
+        padding-right: 50px;
+        font-family: 'Copperplate Gothic Light';
+    " >
+        Logout
+    </a>
+</div>
+{% endif %}
+{% endblock %}
