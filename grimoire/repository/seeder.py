@@ -4,6 +4,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from utility import json_parser
 from api import api_service
 from .models import Anime
+import time
 
 
 DB_MAXIMUM_MODELS = 10000
@@ -53,6 +54,11 @@ def start():
     scheduler.add_job(update, 'interval', hours=1,
                       next_run_time=datetime.now())
     scheduler.start()
+
+    try:
+        time.sleep(2)
+    except( KeyboardInterrupt, SystemExit):
+        scheduler.shutdown()
 
 
 def getRange():
